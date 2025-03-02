@@ -7,7 +7,7 @@ int main() {
         perror("Erreur à l'ouverture du fichier");
         return 1;
     }
-    fprintf(f, "Bonjour "); // Écrire "Bonjour" dans le fichier
+    fprintf(f, "Bonjour\n"); // Écrire "Bonjour" dans le fichier
     fclose(f); // Fermer le fichier
 
     // Ajouter "tout le monde" à la suite
@@ -32,6 +32,21 @@ int main() {
         printf("%s", ligne); // Afficher la ligne sur la console
     }
     fclose(f); // Fermer le fichier
+
+    char c;
+    int lineCount = 0;
+
+    f = fopen("Ex1.txt", "r"); // Ouvrir en mode lecture
+    if (f == NULL) {
+        perror("Erreur à l'ouverture du fichier");
+        return 1;
+    }
+
+    while ((c = fgetc(f)) != EOF) {
+        if (c == '\n') {
+            lineCount++;
+        }
+    }
 
     return 0;
 }
